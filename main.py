@@ -13,18 +13,17 @@ headers = {
 }
 global df
 df = pd.DataFrame()
-st.title('策略')
+
 
 #侧栏显示策略条件
 selected_date = st.sidebar.date_input("选择日期")
 creteria = st.sidebar.selectbox(
     '策略条件',
-     ["9点30分成交额；开盘涨幅"])
+     ["9点30分竞价金额；开盘涨幅；非创业板；非科创板，非st股", ""])
 # sort = st.sidebar.selectbox(
 #     '排序字段',
 #      ["9点30分成交额排序", "9点30分成交额反序"])
-'策略条件:', creteria
-'当前日期',  selected_date
+
 # st.dataframe(df)
 
 @st.cache 
@@ -43,8 +42,10 @@ def get_stocks_by_strategy():
     columns = (res.get("xuangu").get("blocks")[0]).get("data").get("title")
     df.columns = list(map(lambda col : str(col), columns))
     # print(df)
-    # global stdf
-    st.write(df, )
+    st.title('策略')
+    st.write('策略条件:', creteria)
+    st.write('当前日期',  selected_date)
+    st.write(df)
     
 st.sidebar.button('执行策略', on_click=get_stocks_by_strategy)
 
