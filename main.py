@@ -28,7 +28,7 @@ creteria = st.sidebar.selectbox(
 
 @st.cache 
 def req_strategy(strategy):
-    url = "http://m.iwencai.com/wap/search?w={}&source=phone&queryarea=all&tid=stockpick&perpage=20"
+    url = "http://m.iwencai.com/wap/search?w={}&source=phone&queryarea=all&tid=stockpick&perpage=200"
     res = requests.get(url.format(strategy), headers=headers)
     return res.json()
 
