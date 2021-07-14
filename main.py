@@ -19,7 +19,7 @@ df = pd.DataFrame()
 selected_date = st.sidebar.date_input("选择日期")
 creteria = st.sidebar.selectbox(
     '策略条件',
-     ["9点30分竞价金额；开盘涨幅；非创业板；非科创板，非st股", ""])
+     ["{}9点30分成交金额；{}9点30分涨幅；非创业板；非科创板，非st股", ""])
 # sort = st.sidebar.selectbox(
 #     '排序字段',
 #      ["9点30分成交额排序", "9点30分成交额反序"])
@@ -33,7 +33,8 @@ def req_strategy(strategy):
     return res.json()
 
 def get_stocks_by_strategy():
-    strategy = selected_date.strftime("%Y-%m-%d") + " " + creteria
+    date = selected_date.strftime("%Y年%m月%d日")
+    strategy = creteria.format(date, date)
     res = req_strategy(strategy)
     print(res)
     
