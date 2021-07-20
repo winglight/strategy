@@ -1,0 +1,7 @@
+docker image build -t st:app .
+
+docker container run -p 8501:8501 st:app
+
+docker save -o <path for generated tar file> <image name>
+docker load -i <path to image tar file>
+
