@@ -14,7 +14,7 @@ headers = {
 }
 
 import jqdatasdk
-jqdatasdk.auth("15015987150", "XHy9Py9ELfzd")
+jqdatasdk.auth("", "")
 
 #侧栏显示策略条件
 selected_date = st.sidebar.date_input("选择日期")
